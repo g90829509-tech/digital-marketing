@@ -1,0 +1,69 @@
+/* Final polish: compact vertical rhythm, richer motion, and a balanced light footer. */
+:root{--section-space:clamp(54px,6vw,82px)}
+.home-page>section:not(.cruzen-scroll-story):not(.all-services-section){padding-top:var(--section-space)!important;padding-bottom:var(--section-space)!important}
+.hero-section{min-height:clamp(500px,calc(100svh - 205px),610px)!important;padding:24px 22px 34px!important}
+.hero-content{margin-top:0!important;margin-bottom:0!important}
+.cruzen-scroll-story{height:190vh!important}
+.cruzen-story-sticky{min-height:590px!important}
+.all-services-section{padding-top:72px!important;padding-bottom:70px!important}
+.all-services-heading{margin-bottom:46px!important}
+.service-scene{margin-bottom:clamp(52px,6vw,76px)!important}
+.service-scene .service-group-heading{margin-bottom:24px!important}
+.service-bento-scene,.service-motion-scene,.service-network-scene{border-radius:26px!important}
+.service-bento-scene{min-height:390px!important}
+.service-motion-scene{min-height:420px!important}
+.service-network-scene{min-height:430px!important}
+/* Keep the three service compositions intact; add motion to their existing elements. */
+.service-bento-node{animation:serviceNodeEnter .7s both;animation-delay:calc(var(--node-order,0)*90ms)}
+.bento-node-1{--node-order:1}.bento-node-2{--node-order:2}.bento-node-3{--node-order:3}.bento-node-4{--node-order:4}
+.service-bento-node:after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(110deg,transparent 25%,#fff9 48%,transparent 68%);transform:translateX(-130%);transition:transform .75s ease;pointer-events:none}
+.service-bento-node:hover:after{transform:translateX(130%)}
+.service-bento-orbit{animation:serviceBob 4.2s ease-in-out infinite,serviceOrbit 22s linear infinite!important}
+.service-motion-stage{perspective:900px}
+.motion-stage-core{animation:serviceBob 4s ease-in-out infinite,coreTilt 8s ease-in-out infinite!important}
+.motion-stage-ring{will-change:transform}
+.motion-orbit-label{transition:background .3s,box-shadow .3s,scale .3s}
+.service-motion-scene:hover .motion-orbit-label{background:#fff;color:#5c45a8;box-shadow:0 12px 28px #7f6ab53b}
+.service-network-map{perspective:900px}
+.network-hub{animation:hubBreath 4.5s ease-in-out infinite}
+.network-node{transition:transform .35s,box-shadow .35s;animation:serviceBob 5s ease-in-out infinite,networkEnter .8s both}
+.network-node:hover{transform:translateY(-9px) rotate(-5deg) scale(1.08);box-shadow:0 20px 36px #8171b54a}
+.service-network-list a{transition:padding .3s,color .3s,border-color .3s}
+.service-network-list a:hover{padding-left:9px;border-color:#a99ae1;color:#7458d9}
+/* Testimonial constellation gets a gentle depth/parallax feel without changing its layout. */
+.testimonial-orbit-scene{min-height:500px!important;padding-top:58px!important;padding-bottom:58px!important;gap:22px!important}
+.testimonial-orbit-stage{min-height:420px!important;perspective:1000px}
+.testimonial-glass-orb{width:205px!important;height:205px!important;animation:orbHover 7s ease-in-out infinite,orbGlow 5s ease-in-out infinite!important}
+.testimonial-glass-orb:after{content:"";position:absolute;inset:-15px;border:1px solid #a88df055;border-radius:50%;animation:serviceOrbit 28s linear infinite}
+.testimonial-float{transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s!important;animation:testimonialDrift 7s ease-in-out infinite!important}
+.testimonial-float-a{animation-delay:-1s!important}.testimonial-float-b{animation-delay:-3.5s!important}.testimonial-float-c{animation-delay:-5s!important}
+.testimonial-float:hover{z-index:5;transform:translateY(-10px) rotate(0deg) scale(1.045)!important;box-shadow:0 25px 55px #7663a535!important}
+.testimonial-orbit-line{animation-duration:34s!important}
+/* Tighten the content rhythm between all homepage sections and avoid oversized blank bands. */
+.rx-home-proof,.rx-home-showcase,.rx-home-work,.rx-home-analytics,.rx-home-creators,.rx-home-news,.rx-home-areas,.rx-home-faq,.rx-home-final-cta{margin-top:0!important;margin-bottom:0!important}
+.rx-home-proof-head,.rx-showcase-copy,.rx-creators-heading,.rx-home-news>header,.rx-home-faq>header{margin-bottom:28px!important}
+.rx-home-work .rx-centered-link{margin-top:28px!important}
+.rx-home-analytics{gap:clamp(26px,4vw,54px)!important}
+.rx-home-testimonials{margin-top:0!important;margin-bottom:0!important}
+/* Footer: aligned three-column layout with copyright centered at the bottom. */
+.site-footer.rx-site-footer{padding:58px max(24px,calc((100vw - 1200px)/2)) 22px!important;background:linear-gradient(145deg,#f7f5ff,#f1effb 58%,#f8faff)!important;color:#25223f!important;border-top:1px solid #e8e3f4!important}
+.rx-footer-main{width:100%!important;max-width:1200px!important;margin:0 auto!important;display:grid!important;grid-template-columns:minmax(0,1.2fr) minmax(0,.72fr) minmax(0,.9fr)!important;gap:clamp(24px,4vw,54px)!important;align-items:start!important}
+.rx-footer-brand img{max-width:155px!important;height:auto!important;object-fit:contain!important}
+.rx-footer-brand p{max-width:31ch!important;color:#77748d!important;line-height:1.8!important;font-size:13px!important}
+.rx-footer-links{display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:13px!important}
+.rx-footer-links strong{margin-bottom:7px!important;color:#25223f!important;font-size:12px!important;letter-spacing:.04em!important}
+.rx-footer-links a{color:#6f6b83!important;text-decoration:none!important;font-size:12px!important;transition:color .25s,transform .25s!important}
+.rx-footer-links a:hover{color:#7054df!important;transform:translateX(3px)}
+.rx-footer-bottom{max-width:1200px!important;margin:35px auto 0!important;padding-top:18px!important;border-top:1px solid #e1dced!important;display:flex!important;align-items:center!important;justify-content:center!important;text-align:center!important;gap:14px!important;color:#8b879d!important;font-size:10px!important}
+@media(max-width:980px){.rx-footer-main{grid-template-columns:repeat(2,minmax(0,1fr))!important}.rx-footer-brand{grid-column:1/-1!important}}
+@media(max-width:560px){.rx-site-footer{padding:0 20px!important}.rx-footer-main{grid-template-columns:1fr 1fr!important;gap:28px 18px!important;padding:40px 0 30px!important}.rx-footer-brand{grid-column:1/-1!important}.rx-footer-bottom{margin-top:20px!important;padding:16px 0 0!important}}
+@keyframes serviceNodeEnter{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes coreTilt{0%,100%{rotate:-7deg}50%{rotate:7deg}}
+@keyframes hubBreath{0%,100%{box-shadow:0 18px 50px #8c74d955,0 0 0 12px #fff9;scale:1}50%{box-shadow:0 24px 62px #8c74d977,0 0 0 18px #fff7;scale:1.035}}
+@keyframes networkEnter{from{opacity:0;scale:.75}to{opacity:1;scale:1}}
+@keyframes orbHover{0%,100%{translate:0 0;rotate:-3deg}50%{translate:0 -13px;rotate:3deg}}
+@keyframes orbGlow{0%,100%{filter:saturate(1);box-shadow:inset -18px -22px 35px #4c37a455,inset 10px 10px 25px #fff8,0 35px 70px #8c75d966}50%{filter:saturate(1.18);box-shadow:inset -18px -22px 35px #4c37a455,inset 10px 10px 25px #fff8,0 42px 85px #8c75d988}}
+@keyframes testimonialDrift{0%,100%{translate:0 0;rotate:-1deg}50%{translate:0 -10px;rotate:1deg}}
+@media(max-width:900px){.rx-footer-main{grid-template-columns:1fr 1fr!important}.rx-footer-brand{grid-column:1/-1!important}.testimonial-orbit-scene{padding-top:48px!important;padding-bottom:42px!important}}
+@media(max-width:600px){.home-page>section:not(.cruzen-scroll-story):not(.all-services-section){padding-top:48px!important;padding-bottom:48px!important}.hero-section{min-height:540px!important;padding:24px 16px 30px!important}.cruzen-scroll-story{height:180vh!important}.all-services-section{padding:54px 18px!important}.service-scene{margin-bottom:52px!important}.service-bento-scene,.service-motion-scene,.service-network-scene{min-height:unset!important}.testimonial-orbit-scene{min-height:unset!important;padding:48px 18px 28px!important}.testimonial-orbit-stage{min-height:400px!important;scale:.92;transform-origin:top center;margin-bottom:-24px}.rx-footer-main{grid-template-columns:1fr 1fr!important;gap:28px 20px!important}.rx-footer-brand{grid-column:1/-1!important}.rx-footer-bottom{align-items:center!important;flex-direction:column!important;text-align:center!important;margin-top:25px!important}.site-footer.rx-site-footer{padding:44px 20px 20px!important}}
+@media(prefers-reduced-motion:reduce){.service-bento-node,.service-bento-orbit,.motion-stage-core,.network-hub,.network-node,.testimonial-glass-orb,.testimonial-float{animation:none!important;transition:none!important}}

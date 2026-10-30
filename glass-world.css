@@ -1,0 +1,385 @@
+/* ==========================================
+   CRUZEN DIGITAL — 3D GLASS WORLD
+   Light theme / layered ambient background
+========================================== */
+
+:root {
+  --gw-white: #faf9ff;
+  --gw-violet: #6d4aff;
+  --gw-peach: #ffd4bd;
+  --gw-blue: #c5e9ff;
+  --gw-ink: #191a30;
+}
+
+.glass-world {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  isolation: isolate;
+  background: var(--gw-white);
+}
+
+/* Large, slowly flowing light fields */
+.glass-world__glow {
+  position: absolute;
+  width: min(65vw, 850px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(75px);
+  opacity: 0.5;
+  will-change: transform;
+}
+
+.glass-world__glow--violet {
+  top: -32%;
+  left: -20%;
+  background: radial-gradient(
+    circle,
+    rgba(173, 151, 255, 0.75),
+    rgba(209, 198, 255, 0.24) 42%,
+    transparent 70%
+  );
+  animation: gwGlowViolet 19s ease-in-out infinite alternate;
+}
+
+.glass-world__glow--peach {
+  top: 4%;
+  right: -27%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 212, 189, 0.85),
+    rgba(255, 230, 216, 0.28) 44%,
+    transparent 70%
+  );
+  animation: gwGlowPeach 23s ease-in-out infinite alternate;
+}
+
+.glass-world__glow--blue {
+  width: min(58vw, 720px);
+  bottom: -48%;
+  left: 27%;
+  background: radial-gradient(
+    circle,
+    rgba(153, 217, 255, 0.66),
+    rgba(197, 233, 255, 0.2) 45%,
+    transparent 70%
+  );
+  animation: gwGlowBlue 21s ease-in-out infinite alternate;
+}
+
+/* Frosted 3D glass spheres */
+.glass-world__orb {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+
+  background:
+    radial-gradient(
+      circle at 27% 23%,
+      rgba(255, 255, 255, 0.98),
+      rgba(255, 255, 255, 0.44) 14%,
+      transparent 37%
+    ),
+    radial-gradient(
+      circle at 72% 76%,
+      rgba(145, 115, 255, 0.25),
+      transparent 48%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.62),
+      rgba(224, 216, 255, 0.16) 50%,
+      rgba(197, 233, 255, 0.38)
+    );
+
+  box-shadow:
+    inset -12px -14px 30px rgba(113, 79, 219, 0.09),
+    inset 8px 8px 25px rgba(255, 255, 255, 0.8),
+    0 24px 65px rgba(103, 77, 183, 0.12);
+
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  will-change: transform;
+}
+
+.glass-world__orb--large {
+  width: clamp(180px, 25vw, 340px);
+  aspect-ratio: 1;
+  top: 25%;
+  left: -9%;
+  animation: gwOrbFloat 15s ease-in-out infinite;
+}
+
+.glass-world__orb-inner {
+  position: absolute;
+  inset: 12%;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: radial-gradient(
+    circle at 32% 28%,
+    rgba(255, 255, 255, 0.44),
+    transparent 62%
+  );
+}
+
+.glass-world__orb--small {
+  width: clamp(90px, 12vw, 160px);
+  aspect-ratio: 1;
+  top: 13%;
+  right: 12%;
+  background:
+    radial-gradient(
+      circle at 30% 25%,
+      #ffffff,
+      rgba(255, 255, 255, 0.42) 25%,
+      transparent 48%
+    ),
+    linear-gradient(135deg, rgba(197, 233, 255, 0.66), rgba(109, 74, 255, 0.12));
+  animation: gwOrbSmall 12s ease-in-out infinite;
+}
+
+.glass-world__orb--peach {
+  width: clamp(75px, 10vw, 130px);
+  aspect-ratio: 1;
+  bottom: 9%;
+  right: 20%;
+  background:
+    radial-gradient(
+      circle at 28% 25%,
+      rgba(255, 255, 255, 0.98),
+      transparent 40%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255, 212, 189, 0.72),
+      rgba(255, 255, 255, 0.24)
+    );
+  animation: gwOrbPeach 14s ease-in-out infinite;
+}
+
+/* Large transparent orbital rings */
+.glass-world__orbit {
+  position: absolute;
+  width: clamp(240px, 38vw, 530px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(109, 74, 255, 0.16);
+  border-radius: 50%;
+  box-shadow:
+    0 0 35px rgba(109, 74, 255, 0.025),
+    inset 0 0 25px rgba(109, 74, 255, 0.02);
+  will-change: transform;
+}
+
+.glass-world__orbit span {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: 16%;
+  left: 17%;
+  border-radius: 50%;
+  background: #8d75ff;
+  box-shadow:
+    0 0 12px rgba(109, 74, 255, 0.7),
+    0 0 28px rgba(109, 74, 255, 0.35);
+}
+
+.glass-world__orbit--one {
+  top: 10%;
+  left: -12%;
+  animation: gwOrbitOne 38s linear infinite;
+}
+
+.glass-world__orbit--two {
+  width: clamp(190px, 28vw, 390px);
+  top: 34%;
+  right: -8%;
+  border-color: rgba(255, 164, 125, 0.28);
+  animation: gwOrbitTwo 32s linear infinite;
+}
+
+.glass-world__orbit--two span {
+  background: #ffb18b;
+  box-shadow: 0 0 22px rgba(255, 177, 139, 0.7);
+}
+
+.glass-world__orbit--three {
+  width: clamp(280px, 45vw, 620px);
+  bottom: -43%;
+  right: 14%;
+  border-color: rgba(93, 180, 239, 0.22);
+  animation: gwOrbitOne 48s linear infinite reverse;
+}
+
+.glass-world__orbit--three span {
+  background: #87cfff;
+  box-shadow: 0 0 22px rgba(135, 207, 255, 0.8);
+}
+
+/* Tiny floating light particles */
+.glass-world__particle {
+  position: absolute;
+  border-radius: 50%;
+  background: #8e78ff;
+  opacity: 0;
+  box-shadow: 0 0 12px rgba(109, 74, 255, 0.6);
+  animation-name: gwParticleRise;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+/* Motion */
+@keyframes gwGlowViolet {
+  from {
+    transform: translate3d(0, 0, 0) scale(0.9);
+  }
+  to {
+    transform: translate3d(17vw, 13vh, 0) scale(1.12);
+  }
+}
+
+@keyframes gwGlowPeach {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(-15vw, 12vh, 0) scale(0.88);
+  }
+}
+
+@keyframes gwGlowBlue {
+  from {
+    transform: translate3d(-5vw, 0, 0) scale(0.9);
+  }
+  to {
+    transform: translate3d(12vw, -12vh, 0) scale(1.1);
+  }
+}
+
+@keyframes gwOrbFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(38px, -35px, 0) rotate(12deg);
+  }
+}
+
+@keyframes gwOrbSmall {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-28px, 32px, 0);
+  }
+}
+
+@keyframes gwOrbPeach {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-22px, -35px, 0) scale(1.08);
+  }
+}
+
+@keyframes gwOrbitOne {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes gwOrbitTwo {
+  from {
+    transform: rotate(0deg) scaleY(0.76);
+  }
+  to {
+    transform: rotate(-360deg) scaleY(0.76);
+  }
+}
+
+@keyframes gwParticleRise {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0) scale(0.7);
+  }
+  25%,
+  70% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 0.8;
+    transform: translate3d(15px, -45px, 0) scale(1.15);
+  }
+}
+
+/* Keep background decorative and non-interactive */
+.glass-world,
+.glass-world * {
+  pointer-events: none;
+}
+
+/* Mobile: fewer effects and lower GPU cost */
+@media (max-width: 700px) {
+  .glass-world__glow {
+    width: 100vw;
+    filter: blur(48px);
+    opacity: 0.42;
+  }
+
+  .glass-world__orb--large {
+    left: -28%;
+    top: 38%;
+    width: 190px;
+  }
+
+  .glass-world__orb--small {
+    right: -5%;
+    top: 18%;
+    width: 100px;
+  }
+
+  .glass-world__orb--peach {
+    right: 4%;
+    bottom: 12%;
+    width: 80px;
+  }
+
+  .glass-world__orbit--one {
+    left: -45%;
+  }
+
+  .glass-world__orbit--two {
+    right: -40%;
+  }
+
+  .glass-world__orbit--three {
+    right: -30%;
+    bottom: -20%;
+  }
+
+  .glass-world__particle:nth-of-type(n + 9) {
+    display: none;
+  }
+}
+
+/* Accessibility: no animation when requested */
+@media (prefers-reduced-motion: reduce) {
+  .glass-world *,
+  .glass-world {
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  .glass-world__particle {
+    display: none;
+  }
+}
